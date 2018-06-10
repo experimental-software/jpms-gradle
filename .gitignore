@@ -1,0 +1,30 @@
+# Maven
+target/
+
+# Gradle
+build/
+*/build/
+*/out/
+.gradle/
+
+# IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Coala
+*.orig
+
+# Miscellaneous
+\#*
+.#*
+*~
+*~*
+
+

@@ -1,0 +1,52 @@
+
+apply plugin: 'java'
+
+allprojects  {
+  apply plugin: 'maven'
+
+
+
+  group = 'com.experimental'
+  version = '2.1.1'
+}
+
+subprojects {
+
+    repositories {
+        jcenter()
+        mavenLocal()
+        maven { url "http://repo.maven.apache.org/maven2" }
+    }
+
+    apply plugin: 'java'
+    sourceCompatibility = 10
+    targetCompatibility = 10
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+
+    afterEvaluate {
+
+        compileJava {
+            doFirst {
+                options.compilerArgs = [
+                        '-cp', classpath.asPath
+                ]
+            }
+        }
+
+    }
+
+    dependencies {
+        compile group: 'com.giffing.wicket.spring.boot.starter', name: 'wicket-spring-boot-starter', version:'2.1.1'
+        compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version:'2.0.2.RELEASE'
+        compile(group: 'org.hibernate', name: 'hibernate-core', version:'5.2.17.Final') {
+            exclude(module: 'xml-apis')
+        }
+        compile group: 'javax.xml.bind', name: 'jaxb-api', version:'2.3.0'
+        runtime group: 'com.h2database', name: 'h2', version:'1.4.197'
+        testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'2.0.2.RELEASE'
+        testCompile group: 'org.mockito', name: 'mockito-core', version:'2.18.3'
+        compileOnly group: 'org.projectlombok', name: 'lombok', version:'1.16.22'
+    }
+}

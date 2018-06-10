@@ -1,0 +1,11 @@
+
+description = ''
+
+
+compileJava {
+    doFirst {
+        options.compilerArgs = [
+                '-cp', classpath.asPath
+        ]
+    }
+}

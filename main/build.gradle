@@ -1,0 +1,13 @@
+
+plugins {
+    id 'org.springframework.boot' version '2.0.2.RELEASE'
+}
+
+sourceSets.main.resources {
+    srcDirs = ["src/main/java"]; include "**/*.*"
+}
+
+dependencies {
+    compile project(':sales')
+    compile project(':billing')
+}
